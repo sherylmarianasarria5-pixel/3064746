@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Básica</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #74b9ff, #a29bfe);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #2d3436;
+            text-align: center;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            width: 320px;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #0984e3;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 8px 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #74b9ff;
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 20px;
+            background: #dfe6e9;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            color: #2d3436;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Calculadora Básica Mariana</h1>
+
+        <label for="txtdato">Dato (ejemplo):</label>
+        <input type="text" id="txtdato">
+        <button onclick="fnGeo()">Enviar Dato</button>
+
+        <hr style="margin:20px 0;">
+
+        <label for="txtnum1">Número 1:</label>
+        <input type="text" id="txtnum1">
+
+        <label for="txtnum2">Número 2:</label>
+        <input type="text" class="txtnum2">
+
+        <div style="margin-top:15px;">
+            <button onclick="fnCalculaRider()">Sumar</button>
+            <button onclick="fnCalculaRider1()">Restar</button>
+            <button onclick="fnCalculaRider2()">Multiplicar</button>
+            <button onclick="fnCalculaRider3()">Dividir</button>
+        </div>
+
+        <div id="resultado" class="result">Resultado aquí...</div>
+    </div>
+
+    <!-- Aquí enlazamos el archivo JavaScript externo -->
+    <script src="./calculadora.js"></script>
+    <p id="pfosalida">dato resultante en parrafo-ingresado en caja con id</p>
+</body>
+</html>

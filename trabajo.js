@@ -1,59 +1,119 @@
 function fnGeo() {
-    let datovariable = "";
-    datovariable = document.getElementById("txtdato").value;
-    console.log("ingresaste el dato:", datovariable);
+    let datovariable = document.getElementById("txtdato").value;
+    console.log("Ingresaste el dato:", datovariable);
+    fnsalidaparrafo(datovariable);
+    fnalerta(datovariable);
 }
 
+function fnsalidaparrafo(datovariable) {
+    // Crear un párrafo y mostrar en pantalla
+    let p = document.createElement("p");
+    p.textContent = "El dato ingresado fue: " + datovariable;
+    document.body.appendChild(p);
+}
+
+function fnalerta(datovariable) {
+    alert(`El dato ingresado fue: ${datovariable}`);
+}
+
+// --- SUMA ---
 function fnCalculaRider() {
-    let numero1 = 0;
-    let numero2 = 0;
-    numero1 = document.querySelector("#txtnum1").value;
-    numero2 = document.querySelector(".txtnum2").value;
+    let numero1 = parseInt(document.querySelector("#txtnum1").value);
+    let numero2 = parseInt(document.querySelector(".txtnum2").value);
 
-    let resultadosuma = parseInt(numero1) + parseInt(numero2);
-    console.log("la suma de los datos",
-        numero1, "+", numero2, "es:", resultadosuma);
+    let resultadosuma = numero1 + numero2;
 
-    console.log(`la suma de los datos:
-        ${numero1} + ${numero2} es: ${resultadosuma}`);
+    // Mostrar en consola
+    console.log("La suma de los datos:", numero1, "+", numero2, "=", resultadosuma);
+
+    // Mostrar en pantalla
+    let p = document.createElement("p");
+    p.textContent = `La suma de ${numero1} + ${numero2} es: ${resultadosuma}`;
+    document.body.appendChild(p);
 }
 
+// --- RESTA ---
 function fnCalculaRider1() {
-    let numero1 = 0;
-    let numero2 = 0;
-    numero1 = document.querySelector("#txtnum1").value;
-    numero2 = document.querySelector(".txtnum2").value;
+    let numero1 = parseInt(document.querySelector("#txtnum1").value);
+    let numero2 = parseInt(document.querySelector(".txtnum2").value);
 
-    let elresultadoresta = parseInt(numero1) + parseInt(numero2);
-    console.log("el resultado de la resta",
-        numero1, "-", numero2, "=", elresultadoresta);
+    let elresultadoresta = numero1 - numero2;
 
-    console.log(`la resultado de la resta:
-        ${numero1} - ${numero2} = ${elresultadoresta}`);
+    console.log("El resultado de la resta:", numero1, "-", numero2, "=", elresultadoresta);
+
+    let p = document.createElement("p");
+    p.textContent = `La resta de ${numero1} - ${numero2} es: ${elresultadoresta}`;
+    document.body.appendChild(p);
 }
 
+// --- MULTIPLICACIÓN ---
 function fnCalculaRider2() {
-    let numero1 = document.querySelector("#txtnum1").value;
-    let numero2 = document.querySelector(".txtnum2").value;
+    let numero1 = parseInt(document.querySelector("#txtnum1").value);
+    let numero2 = parseInt(document.querySelector(".txtnum2").value);
 
-    let resultadoMultiplicacion = parseInt(numero1) * parseInt(numero2);
+    let resultadoMultiplicacion = numero1 * numero2;
 
-    console.log("El resultado de la multiplicación es",
-        numero1, "*", numero2, "=", resultadoMultiplicacion);
+    console.log("El resultado de la multiplicación es:", numero1, "*", numero2, "=", resultadoMultiplicacion);
 
-    console.log(`El resultado de la multiplicación es:
-        ${numero1} * ${numero2} = ${resultadoMultiplicacion}`);
+    let p = document.createElement("p");
+    p.textContent = `La multiplicación de ${numero1} * ${numero2} es: ${resultadoMultiplicacion}`;
+    document.body.appendChild(p);
 }
 
+// --- DIVISIÓN ---
 function fnCalculaRider3() {
-    let numero1 = document.querySelector("#txtnum1").value;
-    let numero2 = document.querySelector(".txtnum2").value;
+    let numero1 = parseInt(document.querySelector("#txtnum1").value);
+    let numero2 = parseInt(document.querySelector(".txtnum2").value);
 
-    let resultadodivision = parseInt(numero1) / parseInt(numero2);
+    let resultadodivision = numero1 / numero2;
 
-    console.log("resultado division",
-        numero1, "/", numero2, "=", resultadodivision);
+    console.log("El resultado de la división es:", numero1, "/", numero2, "=", resultadodivision);
 
-    console.log(`El resultado de la division es:
-        ${numero1} / ${numero2} = ${resultadodivision}`);
-    }
+    let p = document.createElement("p");
+    p.textContent = `La división de ${numero1} / ${numero2} es: ${resultadodivision}`;
+    document.body.appendChild(p);
+}
+function ejecutarOperacion() {
+  const input1 = document.getElementById('input1').value;
+  const input2 = document.getElementById('input2').value;
+  const operacion = document.getElementById('operacion').value;
+  const resultadoElemento = document.getElementById('resultado');
+  let resultado;
+
+  switch (operacion) {
+    case 'sumar':
+      resultado = sumarNumeros(input1, input2);
+      break;
+    case 'restar':
+      resultado = restarNumeros(input1, input2);
+      break;
+    case 'multiplicar':
+      resultado = multiplicarNumeros(input1, input2);
+      break;
+      case 'dividir' :
+        resultado = dividirNumeros(input1, input2);
+        break;
+    default:
+      resultadoElemento.innerHTML = "Operación no válida";
+      return;
+
+  }
+
+  resultadoElemento.innerHTML = "Resultado: " + resultado;
+}
+
+function sumarNumeros(a, b) {
+  return parseFloat(a) + parseFloat(b);
+}
+
+function restarNumeros(a, b) {
+  return parseFloat(a) - parseFloat(b);
+}
+
+function multiplicarNumeros(a, b) {
+  return parseFloat(a) * parseFloat(b);
+}
+
+function dividirNumeros(a, b) {
+    return parseFloat(a) / parseFloat(b);
+}
