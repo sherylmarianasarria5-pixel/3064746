@@ -1,38 +1,54 @@
-let pantalla = document.getElementById("pantalla");
-let operacion = "";
+let operador = '';
+let valorAnterior = '';
 
-function agregarNumero(num) {
-  if (pantalla.textContent === "0" && 
-    num !==".") {
-      pantalla.textContent = num; 
-    } else {
-        pantalla.textContent += num;
-      }
-    }
-
-function agregarOperacion(op) {
-  operacion += pantalla.textContent +
-  op;
-  pantalla.textContent = "0";
-}
-
-function calcular() {
-  operacion += pantalla.textContent;
-  try {
-    const resultado = eval(operacion);
-    pantalla.textContent = resultado;
-    operacion = "";
-  } catch {
-    pantalla.textContent = "error";
-    operacion = "";
+function agregarNumero(numero) {
+  const pantalla = document.getElementById('pantalla');
+  if (pantalla.innerText === '0') {
+    pantalla.innerText = numero;
+  } else {
+    pantalla.innerText += numero;
   }
 }
 
-function borrar () {
- pantalla.textContend = pantalla.textContent.sline(0, -1) || "0"
+function operar(op) {
+  valorAnterior = document.getElementById('pantalla').innerText;
+  operador = op;
+  document.getElementById('pantalla').innerText = '';
+}
+
+function calcular() {
+  const valorActual = document.getElementById('pantalla').innerText;
+  let resultado = 0;
+
+  switch (operador) {
+    case '+':
+      resultado = parseFloat(valorAnterior) + parseFloat(valorActual);
+      break;
+    case '-':
+      resultado = parseFloat(valorAnterior) - parseFloat(valorActual);
+      break;
+    case '*':
+      resultado = parseFloat(valorAnterior) * parseFloat(valorActual);
+      break;
+    case '/':
+      if (parseFloat(valorActual) === 0) {
+        resultado = 'Error';
+      } else {
+        resultado = parseFloat(valorAnterior) / parseFloat(valorActual);
+      }
+      break;
+  }
+
+  document.getElementById('pantalla').innerText = resultado;
 }
 
 function borrarTodo() {
-  pantalla.textContent = "0"
-  operacion = "";
+  document.getElementById('pantalla').innerText = '0';
+  valorAnterior = '';
+  operador = '';
+}
+
+function borrarUltimo() {
+  const pantalla = document.getElementById('pantalla');
+  pantalla.innerText = pantalla.innerText.slice(0, -1) || '0';
 }
